@@ -8,11 +8,11 @@ const rlsync = require('readline-sync');
 let prompt = (message) => console.log(`=> ${message}`);
 let invalidNumber = (num) => {
   return num.trimStart() === '' || Number.isNaN(Number(num));
-}  
+};
 let invalidOperation = (operation) => {
   let validOperations = [1, 2, 3, 4];
   return !validOperations.includes(Number(operation));
-}
+};
 
 prompt('Welcome to Calculator!');
 
@@ -52,7 +52,7 @@ switch (operation) {
     answer = Number(numOne) / Number(numTwo);
     break;
   default:
-    prompt('I didn\'t understand your numbers or operation. Try that again.')
+    prompt('I didn\'t understand your numbers or operation. Try that again.');
 }
 
 
