@@ -49,8 +49,6 @@ while (repeat) {
     case '4':
       answer = Number(numOne) / Number(numTwo);
       break;
-    default:
-      prompt('I didn\'t understand your numbers or operation. Try that again.');
   }
 
 
