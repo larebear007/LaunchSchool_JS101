@@ -1,10 +1,4 @@
-// checking that branch is switched
-
-// Ask the user for the first number.
-// Ask the user for the second number.
-// Ask the user for an operation to perform.
-// Perform the operation on the two numbers.
-// Print the result to the terminal.
+// added feature: continue with another calculation
 
 const rlsync = require('readline-sync');
 let prompt = (message) => console.log(`=> ${message}`);
@@ -16,46 +10,62 @@ let invalidOperation = (operation) => {
   return !validOperations.includes(Number(operation));
 };
 
-prompt('Welcome to Calculator!');
+let repeat = true;
+while (repeat) {
+  prompt('Welcome to Calculator!');
 
-let numOne = rlsync.question(prompt('What\'s the first number?  '));
-while (invalidNumber(numOne)) {
-  prompt('Please enter a valid number.');
-  numOne = rlsync.question(prompt('What\'s the first number?  '));
-}
+  let numOne = rlsync.question(prompt('What\'s the first number?:  '));
+  while (invalidNumber(numOne)) {
+    prompt('Please enter a valid number.');
+    numOne = rlsync.question(prompt('What\'s the first number?:  '));
+  }
 
-let numTwo = rlsync.question(prompt('What\'s the second number?  '));
-while (invalidNumber(numTwo)) {
-  prompt('Please enter a valid number.');
-  numTwo = rlsync.question(prompt('What\'s the second number?  '));
-}
+  let numTwo = rlsync.question(prompt('What\'s the second number?:  '));
+  while (invalidNumber(numTwo)) {
+    prompt('Please enter a valid number.');
+    numTwo = rlsync.question(prompt('What\'s the second number?:  '));
+  }
 
-let operation = rlsync.question(prompt('What operation would you like to perform?\n\
-1 - Add\n2 - Subtract\n3 - Multiply\n4 - Divide\n'));
-while (invalidOperation(operation)) {
-  prompt('Please enter a valid operation option: 1, 2, 3, or 4.');
-  operation = rlsync.question(prompt('What operation would you like to perform?\n\
+  let operation = rlsync.question(prompt('What operation would you like to perform?\n\
   1 - Add\n2 - Subtract\n3 - Multiply\n4 - Divide\n'));
+  while (invalidOperation(operation)) {
+    prompt('Please enter a valid operation option: 1, 2, 3, or 4.');
+    operation = rlsync.question(prompt('What operation would you like to perform?\n\
+    1 - Add\n2 - Subtract\n3 - Multiply\n4 - Divide\n'));
+  }
+
+
+  let answer;
+  switch (operation) {
+    case '1':
+      answer = Number(numOne) + Number(numTwo);
+      break;
+    case '2':
+      answer = Number(numOne) - Number(numTwo);
+      break;
+    case '3':
+      answer = Number(numOne) * Number(numTwo);
+      break;
+    case '4':
+      answer = Number(numOne) / Number(numTwo);
+      break;
+    default:
+      prompt('I didn\'t understand your numbers or operation. Try that again.');
+  }
+
+
+  prompt(`The result is ${answer}.`);
+
+  calcAgain = rlsync.question(prompt('Would you like to perform another calculation?:  '));
+  if (calcAgain === 'yes' || calcAgain === 'y') {
+    repeat = true;
+    continue;
+  } else if (calcAgain === 'no' || calcAgain === 'n') {
+    repeat = false;
+    prompt('Thanks for using Calculator. Goodbye!');
+  } else {
+    repeat = false;
+    prompt('I didn\'t understand that. Please restart the program to perform\
+  another calculation. Goodbye.');
+  }
 }
-
-
-let answer;
-switch (operation) {
-  case '1':
-    answer = Number(numOne) + Number(numTwo);
-    break;
-  case '2':
-    answer = Number(numOne) - Number(numTwo);
-    break;
-  case '3':
-    answer = Number(numOne) * Number(numTwo);
-    break;
-  case '4':
-    answer = Number(numOne) / Number(numTwo);
-    break;
-  default:
-    prompt('I didn\'t understand your numbers or operation. Try that again.');
-}
-
-
-prompt(`The result is ${answer}.`);
