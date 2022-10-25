@@ -6,6 +6,7 @@
   "validNumber" : "Please enter a valid number." ,
   "validOperation" : "Please enter a valid operation option: 1, 2, 3, or 4." ,
   "result" : "The result is ${answer}." ,
+  "repeat" : "Would you like to perform another calculation?:  " ,
   "goodbye" : "Thanks for using Calculator. Goodbye!" ,
   "badInputGoodbye" : "I didn't understand that. Please restart the program to perform another calculation. Goodbye."
 }
