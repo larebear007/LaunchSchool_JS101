@@ -1,9 +1,24 @@
-// added feature: json file with message configurations
+// calculator.js
+  // added feature: repeat calculator prompting
+  // added feature: json file dependency - prompt messages
+  // added feature: spanish language option
 
+
+const LANGUAGE = 'es';
 const MESSAGES = require('./calculator_messages.json');
+const RLSYNC = require('readline-sync');
 
-const rlsync = require('readline-sync');
-let prompt = (message) => console.log(`=> ${message}`);
+let prompt = (lang, key, extraMessage) => {
+  if (String(extraMessage)) {
+    console.log(`=> ${MESSAGES[lang][key]}` + extraMessage + '.');
+  } else {
+  console.log(`=> ${MESSAGES[lang][key]}`);
+  }
+}
+
+// let prompt = (lang, [key]) => {
+//   console.log(`=> ${MESSAGES[lang][key]}`);
+// }
 let invalidNumber = (num) => {
   return num.trimStart() === '' || Number.isNaN(Number(num));
 };
@@ -14,24 +29,24 @@ let invalidOperation = (operation) => {
 
 let repeat = true;
 while (repeat) {
-  prompt(MESSAGES['welcome']);
+  prompt(LANGUAGE, 'welcome');
 
-  let numOne = rlsync.question(prompt(MESSAGES['firstNumber']));
+  let numOne = RLSYNC.question(prompt(LANGUAGE, 'firstNumber'));
   while (invalidNumber(numOne)) {
-    prompt(MESSAGES['validNumber']);
-    numOne = rlsync.question(prompt(MESSAGES['firstNumber']));
+    prompt(LANGUAGE, 'validNumber');
+    numOne = RLSYNC.question(prompt(LANGUAGE, 'firstNumber'));
   }
 
-  let numTwo = rlsync.question(prompt(MESSAGES['secondNumber']));
+  let numTwo = RLSYNC.question(prompt(LANGUAGE, 'secondNumber'));
   while (invalidNumber(numTwo)) {
-    prompt(MESSAGES['validNumber']);
-    numTwo = rlsync.question(prompt(MESSAGES['secondNumber']));
+    prompt(LANGUAGE, 'validNumber');
+    numTwo = RLSYNC.question(prompt(LANGUAGE, 'secondNumber'));
   }
 
-  let operation = rlsync.question(prompt(MESSAGES['operation']));
+  let operation = RLSYNC.question(prompt(LANGUAGE, 'operation'));
   while (invalidOperation(operation)) {
-    prompt(MESSAGES['validOperation']);
-    operation = rlsync.question(prompt(MESSAGES['operation']));
+    prompt(LANGUAGE, 'validOperation');
+    operation = RLSYNC.question(prompt(LANGUAGE, 'operation'));
   }
 
   let answer;
@@ -50,17 +65,41 @@ while (repeat) {
       break;
   }
 
-  prompt(`The result is ${answer}`);
+  prompt(LANGUAGE, 'result', answer);
 
-  calcAgain = rlsync.question(prompt(MESSAGES['repeat']));
-  if (calcAgain === 'yes' || calcAgain === 'y') {
-    repeat = true;
-    continue;
-  } else if (calcAgain === 'no' || calcAgain === 'n') {
-    repeat = false;
-    prompt(MESSAGES['goodbye']);
-  } else {
-    repeat = false;
-    prompt(MESSAGES['badInputGoodbye']);
+  calcAgain = RLSYNC.question(prompt(LANGUAGE, 'repeat'));
+  
+  switch (LANGUAGE) {
+    case 'en':
+      if (calcAgain === 'yes' || calcAgain === 'y') {
+        repeat = true;
+        continue;
+      } else if (calcAgain === 'no' || calcAgain === 'n') {
+        repeat = false;
+        prompt(LANGUAGE, 'goodbye');
+      } else {
+        repeat = false;
+        prompt(LANGUAGE, 'badInputGoodbye');
+      };
+      break;
+    case 'es':
+      if (calcAgain === 'si' || calcAgain === 's') {
+        repeat = true;
+        continue;
+      } else if (calcAgain === 'no' || calcAgain === 'n') {
+        repeat = false;
+        prompt(LANGUAGE, 'goodbye');
+      } else {
+        repeat = false;
+        prompt(LANGUAGE, 'badInputGoodbye');
+      };
+      break;
   }
+  
 }
+
+/* the project specs did not ask me to handle multi-language input, 
+specifically when the program asks the user if they'd like to perform
+another calculation. I added a switch statement to handle the 'en' or
+'es' language cases. This should be noted in the solution for the 
+assignment */
