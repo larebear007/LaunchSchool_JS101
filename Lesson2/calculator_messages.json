@@ -1,11 +1,27 @@
 {
-  "welcome" : "Welcome to Calculator!" ,
-  "firstNumber" : "What's the first number?:  " ,
-  "secondNumber" : "What's the second number?:  " ,
-  "operation" : "What operation would you like to perform? 1 - Add 2 - Subtract 3 - Multiply 4 - Divide" ,
-  "validNumber" : "Please enter a valid number." ,
-  "validOperation" : "Please enter a valid operation option: 1, 2, 3, or 4." ,
-  "repeat" : "Would you like to perform another calculation?:  " ,
-  "goodbye" : "Thanks for using Calculator. Goodbye!" ,
-  "badInputGoodbye" : "I didn't understand that. Please restart the program to perform another calculation. Goodbye."
+   "en" : {
+    "welcome" : "Welcome to Calculator!" ,
+    "firstNumber" : "What's the first number?:  " ,
+    "secondNumber" : "What's the second number?:  " ,
+    "operation" : "What operation would you like to calculate? 1 - Add 2 - Subtract 3 - Multiply 4 - Divide" ,
+    "validNumber" : "Please enter a valid number." ,
+    "validOperation" : "Please enter a valid operation option: 1, 2, 3, or 4." ,
+    "result" : "The result is " ,
+    "repeat" : "Would you like to perform another calculation?:  " ,
+    "goodbye" : "Thanks for using Calculator. Goodbye!" ,
+    "badInputGoodbye" : "I didn't understand that. Please restart the program to perform another calculation. Goodbye."
+  },
+
+  "es" : {
+    "welcome" : "Bienvenidos a la Calculador!" ,
+    "firstNumber" : "Cuál es el primer número?:  " ,
+    "secondNumber" : "Cuál es el segundo número?:  " ,
+    "operation" : "Cuál operación quería calcular? 1 - Sumar 2 - Restar 3 - Multiplicar 4 - Dividir" ,
+    "validNumber" : "Por favor, entrega un número válido." ,
+    "validOperation" : "Por favor, entrega una opción válida: 1, 2, 3, o 4." ,
+    "result" : "El resultado es " ,
+    "repeat" : "Quería hacer una otra calculación?:  " ,
+    "goodbye" : "Gracías por usa la Calculator. Hasta luego!" ,
+    "badInputGoodbye" : "No lo entendí. Por favor, empezar el programa de nuevo para hacer una otra calculación. Adiós."
+  }
 }
