@@ -1,7 +1,7 @@
 // calculator.js
-  // added feature: repeat calculator prompting
-  // added feature: json file dependency - prompt messages
-  // added feature: spanish language option
+// added feature: repeat calculator prompting
+// added feature: json file dependency - prompt messages
+// added feature: spanish language option
 
 
 const LANGUAGE = 'es';
@@ -12,9 +12,9 @@ let prompt = (lang, key, extraMessage) => {
   if (String(extraMessage)) {
     console.log(`=> ${MESSAGES[lang][key]}` + extraMessage + '.');
   } else {
-  console.log(`=> ${MESSAGES[lang][key]}`);
+    console.log(`=> ${MESSAGES[lang][key]}`);
   }
-}
+};
 
 // let prompt = (lang, [key]) => {
 //   console.log(`=> ${MESSAGES[lang][key]}`);
@@ -67,8 +67,8 @@ while (repeat) {
 
   prompt(LANGUAGE, 'result', answer);
 
-  calcAgain = RLSYNC.question(prompt(LANGUAGE, 'repeat'));
-  
+  let calcAgain = RLSYNC.question(prompt(LANGUAGE, 'repeat'));
+
   switch (LANGUAGE) {
     case 'en':
       if (calcAgain === 'yes' || calcAgain === 'y') {
@@ -80,7 +80,7 @@ while (repeat) {
       } else {
         repeat = false;
         prompt(LANGUAGE, 'badInputGoodbye');
-      };
+      }
       break;
     case 'es':
       if (calcAgain === 'si' || calcAgain === 's') {
@@ -92,14 +92,14 @@ while (repeat) {
       } else {
         repeat = false;
         prompt(LANGUAGE, 'badInputGoodbye');
-      };
+      }
       break;
   }
-  
+
 }
 
-/* the project specs did not ask me to handle multi-language input, 
+/* the project specs did not ask me to handle multi-language input,
 specifically when the program asks the user if they'd like to perform
 another calculation. I added a switch statement to handle the 'en' or
-'es' language cases. This should be noted in the solution for the 
+'es' language cases. This should be noted in the solution for the
 assignment */
