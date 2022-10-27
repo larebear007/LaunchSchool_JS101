@@ -49,7 +49,9 @@ while (repeat) {
     loanDuration *= 12;
   }
 
-  let monthlyPayment = loanAmount * (monthlyIR / (1 - Math.pow((1 + monthlyIR), (-loanDuration))));
+  let monthlyPayment = loanAmount *
+                (monthlyIR / (1 - Math.pow((1 + monthlyIR), (-loanDuration))));
+
   prompt('monthlyPayment', '$' + monthlyPayment.toFixed(2) + '.');
 
   let repeatQuestion = RLSYNC.question(prompt('repeat'));
