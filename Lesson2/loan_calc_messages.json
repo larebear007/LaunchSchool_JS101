@@ -1,0 +1,35 @@
+{
+  "language" : "Hello! For English, enter 'en'.\n> Hola! Para español, entrega 'es': " ,
+
+  "en" : {
+    "welcome" : "Welcome to Loan Calculator!" ,
+    "loanAmount" : "Enter your loan amount (excluding any commas): " ,
+    "invalidLoanAmount" : "Invalid input: Do not include any extra characters in your input." ,
+    "apr" : "Enter your Annual Percentage Rate (APR):\n> Example: If your APR is 5.6%, then enter '5.6'" ,
+    "invalidAPR" : "Invalid input: Do not include any extra characters in your input." ,
+    "yearsOrMonths" : "Would you like to enter your loan duration in years or in months?\n> Please enter 'years' or 'months': " ,
+    "invalidYearsOrMonths" : "Invalid input: Enter 'years' or 'months'" ,
+    "loanDuration" : "Enter your loan duration in " ,
+    "invalidLoanDuration" : "Invalid input: Enter your loan duration as a number." ,
+    "repeat" : "Would you like to calcualte another monthly loan payment?: " ,
+    "goodbye" : "Thank you for using Loan Calculator. Goodbye!" ,
+    "badInputGoodbye" : "Invalid input: Please restart the program if you'd like to calculate another monthly loan payment." ,
+    "monthlyPayment" : "The monthly payment on your loan will be " 
+  },
+
+  "es" :{
+    "welcome" : "¡Bienvenidos a la Calucladora de Préstamo!" ,
+    "loanAmount" : "Entrega la cantidad de su préstamo (sin algunas comas): " ,
+    "invalidLoanAmount" : "Entrada inválida: No incluya ningunas cáracteres extras en su respuesta." ,
+    "apr" : "Entrega su Taxa Anual Efectiva (TAE):\n> Ejémplo: Si su TAE es 5.6%, entrega '5.6'" ,
+    "invalidAPR" : "Entrada inválida: No incluya ningunas cáracteres extras en su respuesta." ,
+    "yearsOrMonths" : "Quería entregar la duración del préstamo en años o en meses?\n> Please enter 'años' or 'meses': " ,
+    "invalidYearsOrMonths" : "Entrada inválida: Entrega 'años' or 'meses'" ,
+    "loanDuration" : "Entrega la duración del préstamo en " ,
+    "invalidLoanDuration" : "Entrada inválida: Entrega la duración del préstamo como un número." ,
+    "repeat" : "Quería calcular un otro pago de préstamo mensual?: " ,
+    "goodbye" : "Gracías por usar la Calucladora de Préstamo. ¡Hasta luego!" ,
+    "badInputGoodbye" : "Entrada inválida: Por favor, empezar el programa de nuevo si quería calcular un otro pago de préstamo mensual." ,
+    "monthlyPayment" : "El pago mensual por su préstamo será " 
+  }
+}
