@@ -138,6 +138,28 @@ console.log('Q8 ANSWER: ^');
 // Question 9
 
 console.log('\n-- Question 9 --');
+function rps(fist1, fist2) {
+  if (fist1 === "rock") {
+    return fist2 === "paper" ? "paper" : "rock";
+  } else if (fist1 === "paper") {
+    return fist2 === "scissors" ? "scissors" : "paper";
+  } else {
+    return fist2 === "rock" ? "rock" : "scissors";
+  }
+}
+
+console.log(rps(rps(rps("rock", "paper"), rps("rock", "scissors")), "rock"));
+console.log('Q9 ANSWER: This nested fuction call evaluates to "paper" as the winner.');
 
 // Question 10
 console.log('\n-- Question 10 --');
+function foo(param = "no") {
+  return "yes";
+}
+
+function bar(param = "no") {
+  return param === "no" ? "yes" : "no";
+}
+
+console.log(bar(foo()));
+console.log('Q10 ANSWER: The function invocation will return "no".');
