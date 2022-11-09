@@ -56,17 +56,28 @@ console.log(`one is: ${one}`);
 console.log(`two is: ${two}`);
 console.log(`three is: ${three}`);
 
+// Question 3
+
+console.log('\n-- Question 3 --');
+console.log('* Difficult to display in VsCode *\n\
+Related to variable shadowing with function and global scope.\n\
+REVIEW FOR LATER.');
+
 // Question 4
 
 console.log('\n-- Question 4 --');
 function isDotSeparatedIpAddress(inputString) {
   let dotSeparatedWords = inputString.split(".");
+  if (dotSeparatedWords.length !== 4) {
+    return false;
+  }
   while (dotSeparatedWords.length > 0) {
     let word = dotSeparatedWords.pop();
     if (!isAnIpNumber(word)) {
-      break;
+      return false;
     }
   }
-
   return true;
 }
+console.log('Q4 ANSWER: check that length is 4, and if not return false. Change\
+break statement to a return false statement.');
