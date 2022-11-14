@@ -111,3 +111,41 @@ let oddLists = (array) => {
 console.log(oddLists([1, 2, 3, 4, 5]));
 console.log(oddLists([0, -1 , 0, -1, 0])); 
 console.log(oddLists(['odd', 'even', 'odd', 'even']));
+
+// 9. Convert a String to a Number!
+console.log('\n-- Question 9 --');
+
+let stringToNumber = (string) => {
+  let validNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let numberArray = [];
+
+
+  // if string is 15
+  // string length is 2, index[0] = in
+
+
+}
+
+console.log(stringToNumber('123')); // 123
+console.log(typeof stringToNumber('123')); // number
+
+// 10. Convert a String to a signed number
+console.log('\n-- Question 10 --');
+
+// 11. Convert a Number to a String
+console.log('\n-- Question 11 --');
+
+let numberToString = (number) => `${number}`;
+
+console.log(numberToString(1));
+console.log(numberToString(398));
+console.log(typeof numberToString(398));
+
+// 12. Convert a signed number to a string
+console.log('\n-- Question 11 --');
+
+let signedNumToString = (number) => `${number}`;
+
+console.log(numberToString(-1));
+console.log(numberToString(+398));
+console.log(typeof numberToString(+398));
