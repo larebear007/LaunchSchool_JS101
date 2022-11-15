@@ -116,14 +116,29 @@ console.log(oddLists(['odd', 'even', 'odd', 'even']));
 console.log('\n-- Question 9 --');
 
 let stringToNumber = (string) => {
-  let validNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  let numberArray = [];
+  let digits = {
+    0 : 0 ,
+    1 : 1 ,
+    2 : 2 ,
+    3 : 3 ,
+    4 : 4 ,
+    5 : 5 ,
+    6 : 6 ,
+    7 : 7 ,
+    8 : 8 ,
+    9 : 9
+  }
 
+  let numArray = string.split('').map(char => digits[char]);
+  let number = 0;
 
-  // if string is 15
-  // string length is 2, index[0] = in
+  let power = numArray.length - 1;
+  for (i = 0; i < numArray.length; i += 1) {
+    number += numArray[i] * (10 ** power)
+    power -= 1;
+  }
 
-
+  return number;
 }
 
 console.log(stringToNumber('123')); // 123
@@ -131,6 +146,28 @@ console.log(typeof stringToNumber('123')); // number
 
 // 10. Convert a String to a signed number
 console.log('\n-- Question 10 --');
+
+let stringToSignedInteger = (string) => {
+
+  let number;
+
+  if (string.startsWith('-')) {
+    number = stringToNumber(string.slice(1)) * -1;
+  } else if (string.startsWith('+')) {
+    number = stringToNumber(string.slice(1));
+  } else {
+    number = stringToNumber(string);
+  }
+
+  return number;
+
+}
+
+console.log(stringToSignedInteger('-1'));
+console.log(typeof stringToSignedInteger('-1'));
+console.log(stringToSignedInteger('+55'));
+console.log(typeof stringToSignedInteger('+55'));
+
 
 // 11. Convert a Number to a String
 console.log('\n-- Question 11 --');
@@ -142,10 +179,10 @@ console.log(numberToString(398));
 console.log(typeof numberToString(398));
 
 // 12. Convert a signed number to a string
-console.log('\n-- Question 11 --');
+console.log('\n-- Question 12 --');
 
 let signedNumToString = (number) => `${number}`;
 
-console.log(numberToString(-1));
-console.log(numberToString(+398));
-console.log(typeof numberToString(+398));
+console.log(signedNumToString(-1));
+console.log(signedNumToString(+398));
+console.log(typeof signedNumToString(+398));
