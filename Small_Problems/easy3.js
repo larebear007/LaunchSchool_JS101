@@ -100,23 +100,142 @@ console.log(findFibonacciIndexByDigits(10n)) //=== 45n;
 console.log(findFibonacciIndexByDigits(16n)) //=== 74n;
 console.log(findFibonacciIndexByDigits(100n)) //=== 476n;
 console.log(findFibonacciIndexByDigits(1000n)) //=== 4782n;
-console.log(findFibonacciIndexByDigits(10000n)) //=== 47847n;
+// console.log(findFibonacciIndexByDigits(10000n)) //=== 47847n;
 
 
 // 5. Right Triangles
 console.log('\n-- Question 5--');
 
-// 6. 
+let displayTriangle = (number) => {
+
+  let starArray = [];
+  starArray.length = number;
+  for (i = starArray.length -1; i > -1; i -= 1) {
+    starArray[i] = '*'
+    starArray.fill(' ', 0, i);
+    console.log(starArray.join(''));
+  }
+}
+
+displayTriangle(5);
+displayTriangle(9);
+
+// 6. Mad Libs
 console.log('\n-- Question 6--');
 
-// 7. 
+// let playMadLibs = () => {
+//   const RLSYNC = require('readline-sync');
+
+//   let noun = RLSYNC.question('Enter a noun: ');
+//   let name1 = RLSYNC.question('Enter a name: ');
+//   let name2 = RLSYNC.question('Enter another name: ');
+//   let adj = RLSYNC.question('Enter an adjective: ');
+//   let foods = RLSYNC.question('Enter an food (plural): ');
+//   let animal = RLSYNC.question('Enter an animal: ');
+//   let country = RLSYNC.question('Enter a fictional country: ');
+
+//   let madLibs1 = `There once was a ${adj} ${animal} named, ${name1}. \n\
+// It lived in the country ${country}, and for all its life it had \n\
+// always grazed on ${foods}. How peaceful . . . yet boring. The end.`
+
+//   let madLibs2 = `Once there was a ${noun} named ${name1}. ${name1} \n\
+// lived in a big ${adj} house with its grandmother, Grandma ${name2}. \n\
+// One day the ${noun} ${name1} and ${noun} Grandma ${name2} wanted to go out. \n\
+// "Where do you want to go today, ${name1}?", asked Grandma ${name2}. I want \n\
+// to go to ${country}," said ${name1}. And then they did go to ${country}. \n\
+// They surely, surely did.`
+
+//   console.log('\n' + 'Madlibs1: ' + madLibs1 + '\n');
+//   console.log('Madlibs1: ' + madLibs2);
+// }
+
+// playMadLibs();
+
+// 7. Double Doubles
 console.log('\n-- Question 7--');
 
-// 8. 
+let isDoubleNumber = (candidate) => {
+  let trueOrFalse = false;
+  let candidateString = String(candidate);
+
+  if (candidateString.length % 2 === 0) {
+    let midPointIndex = (candidateString.length / 2);
+    let firstHalf = candidateString.slice(0, midPointIndex);
+    let secondHalf = candidateString.slice(midPointIndex);
+
+    if (firstHalf === secondHalf) {
+      trueOrFalse = true;
+    }
+  }
+  
+  return trueOrFalse;
+}
+
+let twice = (number) => {
+  let newNumber;
+
+  if (isDoubleNumber(number)) {
+    newNumber = number;
+  } else {
+    newNumber = number * 2;
+  }
+
+  return newNumber;
+}
+
+console.log(twice(44));
+console.log(twice(103103));
+console.log(twice(333));
+
+// 8. Grade Book
 console.log('\n-- Question 8--');
 
-// 9. 
+let getGrades = (grade1, grade2, grade3) => {
+  let average = (grade1 + grade2 + grade3) / 3;
+  let letterGrade;
+
+  if (average > 89) {
+    letterGrade = 'A';
+  } else if (average > 79) {
+    letterGrade = 'B';
+  } else if (average > 69) {
+    letterGrade = 'C';
+  } else if (average > 59) {
+    letterGrade = 'D';
+  } else {
+    letterGrade = 'F';
+  }
+
+  return letterGrade;
+}
+
+console.log(getGrades(90, 91, 99));
+console.log(getGrades(80, 89, 84));
+console.log(getGrades(50, 54, 87));
+
+// 9. Clean Up the Words
 console.log('\n-- Question 9--');
+
+let cleanUp = (string) => {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+  let cleanArray = [];
+  
+  for (i = 0; i < string.length; i += 1) {
+    if (!alphabet.includes(string[i])) {
+      cleanArray.push(' ');
+      if (cleanArray[i] === cleanArray[i - 1]) {
+      cleanArray.splice(cleanArray[i, 1]);
+      } 
+    } else {
+      cleanArray.push(string[i]);
+    }
+  }
+
+  return cleanArray.join('');
+}
+
+
+console.log(cleanUp('happy&$ day--Z&'));
 
 // 10. 
 console.log('\n-- Question 10--');
