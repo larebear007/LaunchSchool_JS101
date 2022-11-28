@@ -216,26 +216,72 @@ console.log(getGrades(50, 54, 87));
 // 9. Clean Up the Words
 console.log('\n-- Question 9--');
 
-let cleanUp = (string) => {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ';
-  let cleanArray = [];
-  
-  for (i = 0; i < string.length; i += 1) {
-    if (!alphabet.includes(string[i])) {
-      cleanArray.push(' ');
-      if (cleanArray[i] === cleanArray[i - 1]) {
-      cleanArray.splice(cleanArray[i, 1]);
-      } 
-    } else {
-      cleanArray.push(string[i]);
-    }
-  }
+const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-  return cleanArray.join('');
+let cleanUp = (string) => {
+  
+  let cleanCharsArray = string.split('').map(char => {
+    if (!(alphabet.includes(char))) {
+      return char = ' ';
+    } else {
+      return char;
+    }
+  });
+
+  let cleanString = cleanCharsArray.filter((char, idx, arr) => {
+    if (char === ' ' && arr[idx - 1] === ' ') {
+      return false;
+    } else {
+      return true;
+    }
+  }).join('');
+
+  return cleanString;
 }
 
+console.log(cleanUp("---what's my +*& line?"));
+console.log(cleanUp('my!name!!!!is!!!!laren!'));
+console.log(cleanUp('$$$$$$$money sign$s'));
 
-console.log(cleanUp('happy&$ day--Z&'));
-
-// 10. 
+// 10. What century is that?
 console.log('\n-- Question 10--');
+
+let century = (year) => {
+  
+  let yearStr = String(year);
+  let lastTwoDigits = yearStr.slice(yearStr.length - 2);
+  let century;
+
+  if (lastTwoDigits === '00') {
+    century = Number(yearStr.slice(0, yearStr.length - 2));
+  } else {
+    century = Number(yearStr.slice(0, yearStr.length - 2)) + 1
+  }
+  
+  let centuryStr = String(century);
+  let lastDigit = centuryStr.slice(centuryStr - 1);
+  let centLastTwoDigits = centuryStr.slice(centuryStr - 2);
+  let ordinal;
+  
+  if (lastDigit === '1' && centLastTwoDigits !== '11') {
+    ordinal = 'st';
+  } else if (lastDigit === '2' && centLastTwoDigits !== '12') {
+    ordinal = 'nd';
+  } else if (lastDigit === '3' && centLastTwoDigits !== '13') {
+    ordinal = 'rd';
+  } else {
+    ordinal = 'th';
+  }
+
+  return `${century}${ordinal}`;
+}
+
+console.log(century(2000));
+console.log(century(2001));
+console.log(century(1965));
+console.log(century(256));
+console.log(century(5));
+console.log(century(10103));
+console.log(century(1052));
+console.log(century(1127));
+console.log(century(11201));
