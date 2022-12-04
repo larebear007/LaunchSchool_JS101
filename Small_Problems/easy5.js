@@ -195,7 +195,7 @@ let timeOfDay = (input) => {
   let hours = Math.floor(rawHours)
   let rawMins = (rawHours - hours) * MINS_IN_AN_HOUR;
   let mins = Math.floor(rawMins)
-  let days = Math.floor(hours % HOURS_IN_A_DAY);
+  let days = Math.floor(hours % HOURS_IN_A_DAY);f
 
   if (hours >= HOURS_IN_A_DAY) {
     hours = hours - (HOURS_IN_A_DAY * days);
