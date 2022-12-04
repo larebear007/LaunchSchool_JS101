@@ -69,14 +69,16 @@ console.log('\n-- Question 5 --');
 let substrings = (string) => {
   let chars = string.split('');
   let substrings = [];
-  chars.forEach(char, idx => {
-    for (idx; i < chars.length; idx += 1) {
-      substrings.push(string.slice(0, idx))
+  chars.forEach((char, idx) => {
+    for (endIdx = idx + 1; endIdx <= chars.length; endIdx += 1) {
+      substrings.push(string.slice(idx, endIdx));
     }
-    chars.shift();
-  })
+  });
+
+  return substrings; 
 }
 
+console.log(substrings('abcde'));
 
 // 6.
 console.log('\n-- Question 6 --');
