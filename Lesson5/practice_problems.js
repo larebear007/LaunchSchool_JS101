@@ -115,44 +115,180 @@ let obj = {
 };
 
 const VOWELS = 'aeiou';
-let vowelsFromObj = '';
-Object.entries(obj).forEach(arr => {
-  let vowels;
-  if (typeof arr[0] === 'string') { // string
-    vowels = arr.split('').filter(char => VOWELS.includes(char)).join(''); //string of only vowels
-    vowelsFromObj += vowels;
-  } else { // object
-    arr.forEach(subArr => {
-      let vowels = subArr.split('').filter(char => VOWELS.includes(char)).join(''); // string of only vowels
-      vowelsFromObj += vowels;
+Object.values(obj).forEach(arrVal => {
+  arrVal.forEach(word => {
+    word.split('').forEach(char => {
+      if (VOWELS.includes(char)) {
+        console.log(char);
+      }
     });
-  }
+  });
 });
-console.log(vowelsFromObj);
 
-// 9. 
+// 9. Return array with subarrays orded alph or numerically
 console.log('\n-- Problem 9 --');
 
-// 10. 
+let arr9 = [['b', 'c', 'a'], [2, 11, -3], ['blue', 'black', 'green']];
+let sortedArr9 = arr9.map(subArr => {
+  if (typeof subArr[0] === 'string') {
+    return subArr.slice().sort();
+  } else if (typeof subArr[0] === 'number') {
+    return subArr.slice().sort((a, b) => a - b);
+  }
+});
+
+console.log(sortedArr9);
+
+
+// 10. Sort in descending order *** REDO, DID NOT OUTPUT CORRECTLY ***
 console.log('\n-- Problem 10 --');
 
-// 11. 
+let array10 = [['b', 'c', 'a'], [2, 11, -3], ['blue', 'black', 'green']];
+let sortedArray10 = array10.map(subArr => {
+  return subArr.slice().sort((a, b) => {
+    if (typeof a === 'number') {
+      return b - a;
+    }
+
+    if (a < b) {
+      return 1;
+    } else if (b > a) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+});
+
+console.log(array10);
+
+// 11. Increment by 1, don't modify original
 console.log('\n-- Problem 11 --');
+
+let arr11 = [{ a: 1 }, { b: 2, c: 3 }, { d: 4, e: 5, f: 6 }];
+let incremented = arr11.slice().map(obj => {
+  objCopy = Object.assign({}, obj)
+  for (let key in objCopy) {
+    objCopy[key] += 1;
+  }
+  return objCopy;
+});
+
+console.log(arr11);
+console.log(incremented);
 
 // 12.
 console.log('\n-- Problem 12 --');
 
-// 13. 
+let arr12 = [[2], [3, 5, 7], [9], [11, 15, 18]];
+let multiplesOf3 = arr12.map(subArr => {
+  return subArr.filter(num => num % 3 === 0);
+});
+
+console.log(multiplesOf3);
+
+// 13. Sort array elements based of sum of odd values
 console.log('\n-- Problem 13 --');
+
+let arr13 = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
+arr13.sort((a, b) => {
+  let oddNumsA = a.filter(num => num % 2 === 1);
+  let oddSumA = oddNumsA.reduce((ac, el) => ac + el, 0);
+
+  let oddNumsB = b.filter(num => num % 2 === 1);
+  let oddSumB = oddNumsB.reduce((ac, el) => ac + el, 0);
+
+  return oddSumA - oddSumB;
+});
+
+console.log(arr13);
 
 // 14. 
 console.log('\n-- Problem 14 --');
 
+let obj14 = {
+  grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+  carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+  apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+  apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+  marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+};
+
+let colorsAndSizes = [];
+for (let fruit in obj14) {
+  let colors = obj14[fruit]['colors'].slice();
+  colors = colors.map(color => {
+    return color = color[0].toUpperCase() + color.slice(1);
+  });
+
+  let size = obj14[fruit]['size'].toUpperCase();
+  console.log(size);
+
+  colorsAndSizes.push(colors, size);
+}
+
+console.log(colorsAndSizes);
+
 // 15. 
 console.log('\n-- Problem 15 --');
 
-// 16. 
+let arr15 = [
+  { a: [1, 2, 3] },
+  { b: [2, 4, 6], c: [3, 6], d: [4] },
+  { e: [8], f: [6, 10] },
+];
+
+let evenObjectsArray = arr15.filter(obj => {
+  let allEven = true;
+  for (let key in obj) {
+    obj[key].forEach(num => {
+      if (num % 2 !== 0) {
+        allEven = false;
+        return;
+      }
+    });
+  }
+  return allEven;
+});
+
+console.log(evenObjectsArray);
+
+// 16. creat new obj, key is first item in subarray
 console.log('\n-- Problem 16 --');
 
-// 17. 
+let arr16 = [['a', 1], ['b', 'two'], ['sea', {'c': 3}], ['D', ['a', 'b', 'c']]];
+let obj16 = {};
+
+arr16.forEach(subArr => {
+  obj16[subArr[0]] = subArr[1];
+});
+
+console.log(obj16);
+
+// 17. UUID
 console.log('\n-- Problem 17 --');
+
+let getRandomChar = () => {
+  const HEX_CHARS = '0123456789abcdef';
+  let randomIndex = Math.floor(Math.random() * HEX_CHARS.length);
+  let randomChar = HEX_CHARS[randomIndex];
+  return randomChar;
+}
+
+let creatUUID = () => {
+  let UUIDparts = [[], [], [], [], []];
+  for (i = 0; i < 8; i += 1) {
+    UUIDparts[0].push(getRandomChar());
+  }
+  for (i = 0; i < 4; i +=1) {
+    UUIDparts[1].push(getRandomChar());
+    UUIDparts[2].push(getRandomChar());
+    UUIDparts[3].push(getRandomChar());
+  }
+  for (i = 0; i < 4; i +=1) {
+    UUIDparts[4].push(getRandomChar());
+  }
+  return UUIDparts.map(arr => arr.join('')).join('-');
+}
+
+console.log(creatUUID());
