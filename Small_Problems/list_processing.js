@@ -146,14 +146,50 @@ console.log(buyFruit(groceryList));
 // 9. Inventory Item Transactions
 console.log('\n-- Question 9 --');
 
+let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+                     { id: 105, movement: 'in',  quantity: 10 },
+                     { id: 102, movement: 'out', quantity: 17 },
+                     { id: 101, movement: 'in',  quantity: 12 },
+                     { id: 103, movement: 'out', quantity: 20 },
+                     { id: 102, movement: 'out', quantity: 15 },
+                     { id: 105, movement: 'in',  quantity: 25 },
+                     { id: 101, movement: 'out', quantity: 18 },
+                     { id: 102, movement: 'in',  quantity: 22 },
+                     { id: 103, movement: 'out', quantity: 15 }, ];
 
-// 10. 
+
+let transactionsFor = (item, transactions) => {
+  return transactions.filter(obj => obj.id === item);
+}
+
+console.log(transactionsFor(101, transactions));
+// returns
+// [ { id: 101, movement: "in",  quantity:  5 },
+//   { id: 101, movement: "in",  quantity: 12 },
+//   { id: 101, movement: "out", quantity: 18 }, ]
+
+// 10. Inventory Item Availability
 console.log('\n-- Question 10 --');
 
+let isItemAvailable = (item, transactions) => {
+  let itemTransactions = transactionsFor(item, transactions);
+  let available;
+  let itemCount = 0;
 
-// 11. 
-console.log('\n-- Question 11 --');
+  itemTransactions.forEach(transaction => {
+    if (transaction.movement === 'in') {
+      itemCount += transaction.quantity;
+    } else if (transaction.movement === 'out') {
+      itemCount -= transaction.quantity;
+    }
+  });
 
+  if (itemCount < 0) available = false;
+  else if (itemCount > 0) available = true;
 
-// 12. 
-console.log('\n-- Question 12 --');
+  return available;
+}
+
+console.log(isItemAvailable(101, transactions));
+console.log(isItemAvailable(103, transactions));
+console.log(isItemAvailable(105, transactions));
