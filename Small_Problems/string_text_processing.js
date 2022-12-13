@@ -87,22 +87,98 @@ console.log(swapCase('Tonight on XYZ-TV'));
 // 6. Staggered Caps (part 1)
 console.log('\n-- Question 6 --');
 
+let staggeredCase = (string) => {
+  let staggeredLetters = string.split('').map((char, idx) => {
+    if (idx % 2 === 0) {
+      return char.toUpperCase();
+    } else {
+      return char.toLowerCase();
+    }
+  });
 
+  return staggeredLetters.join('');
+ }
 
+console.log(staggeredCase('I Love Launch School!'));
+console.log(staggeredCase('ALL_CAPS'));
+console.log(staggeredCase('ignore 77 the 4444 numbers'));
 
 // 7. Staggered Caps (part 2)
 console.log('\n-- Question 7 --');
 
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let realStaggeredCase = (string) => {
+  let count = -1;
+  return string
+        .split('')
+        .map(char => {
+          if (ALPHABET.includes(char)) {
+            count += 1;
+            return count % 2 === 0 ? char.toUpperCase() : char.toLowerCase();
+          }
+          return char;
+        })
+        .join('');
+}
 
-// 8.
+console.log(realStaggeredCase('I Love Launch School!'));
+console.log(realStaggeredCase('ALL CAPS'));
+console.log(realStaggeredCase('ignore 77 the 444 numbers'));
+
+// 8. How Long Are You?
 console.log('\n-- Question 8 --');
 
+let wordLengths = (string = '') => {
+  if (string.trim().length === 0) return [];
+  return string
+        .split(' ')
+        .map(word => `${word} ${word.length}`);
+}
 
-// 9. 
+console.log(wordLengths('cow sheep chicken'));
+console.log(wordLengths('baseball hot dogs and apple pie'));
+console.log(wordLengths("It ain't easy, is it?"));
+console.log(wordLengths('Supercalifragilisticexpialidocious'));
+console.log(wordLengths(''));
+console.log(wordLengths());
+
+
+// 9. Search Word (part 1)
 console.log('\n-- Question 9 --');
 
+let searchWord = (subtext, text) => {
+  let wordCount = 0;
+  text.split(' ').forEach(word => {
+    let cleanWOrd = word.split('')
+                        .filter(char => ALPHABET.includes(char))
+                        .join('');
+    if (cleanWOrd.toLowerCase() === subtext.toLowerCase()) {
+      wordCount += 1;
+    }
+    });
+  return wordCount;
+}
 
-// 10. 
+let txtInput = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
+
+console.log(searchWord('sed', txtInput)); // 3
+console.log(searchWord('itll', "It'll! be what it'll, be.")); // 2
+
+// 10. Search Word (part 2)
 console.log('\n-- Question 10 --');
 
+let highlightWord = (subtext, text) => {
+  return text
+        .split(' ')
+        .map(word => {
+          if (word === subtext) {
+            return `**${word.toUpperCase()}**`;
+          }
+          return word;
+        })
+        .join(' ');
+}
+
+console.log(highlightWord('sed', txtInput));
+console.log(highlightWord('itll', "It'll! be what it'll, be."));
 
